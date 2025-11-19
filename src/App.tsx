@@ -1,12 +1,11 @@
 import { useState, useEffect } from 'react';
 import './index.css';
-import { Github, Linkedin, Mail, Code, Sun, Moon, MapPin, Phone, ExternalLink, ChevronDown } from 'lucide-react';
+import { Github, Linkedin, Mail, Code, Sun, Moon, MapPin, Phone, ExternalLink, ChevronDown, Database, Server, Braces } from 'lucide-react';
 import ProjectCard from './components/ProjectCard';
 import SkillBadge from './components/SkillBadge';
 import CVSection from './components/CVSection';
 import AnimatedSection from './components/AnimatedSection';
-import { FaNodeJs, FaReact, FaGitAlt } from 'react-icons/fa';
-import { SiExpress, SiNestjs, SiMongodb, SiMysql, SiJavascript, SiTypescript, SiVite, SiHtml5, SiPostman, SiSwagger, SiPostgresql, SiRedis } from 'react-icons/si';
+import Logo from './components/Logo';
 
 const App = () => {
   const [darkMode, setDarkMode] = useState(() => localStorage.getItem('darkMode') === 'true');
@@ -47,25 +46,27 @@ const App = () => {
 
       {/* Floating Navigation */}
       <nav 
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
           scrolled 
-            ? 'bg-background/80 backdrop-blur-lg shadow-sm py-4' 
+            ? 'bg-background/95 backdrop-blur-xl border-b border-border shadow-sm py-3' 
             : 'bg-transparent py-6'
         }`}
       >
-        <div className="container mx-auto px-4 flex justify-between items-center">
-          <a href="#" className="text-2xl font-bold text-gradient">AE</a>
-          <div className="flex gap-6 items-center">
-            <a href="#about" className="text-sm font-medium hover:text-primary transition-colors">About</a>
-            <a href="#projects" className="text-sm font-medium hover:text-primary transition-colors">Projects</a>
-            <a href="#skills" className="text-sm font-medium hover:text-primary transition-colors">Skills</a>
-            <a href="#cv" className="text-sm font-medium hover:text-primary transition-colors">CV</a>
+        <div className="container mx-auto px-6 md:px-8 flex justify-between items-center">
+          <a href="#" className="hover:scale-105 transition-transform duration-300">
+            <Logo size="md" />
+          </a>
+          <div className="hidden md:flex gap-8 items-center">
+            <a href="#about" className="text-sm font-medium text-foreground/70 hover:text-foreground transition-colors">About</a>
+            <a href="#projects" className="text-sm font-medium text-foreground/70 hover:text-foreground transition-colors">Projects</a>
+            <a href="#skills" className="text-sm font-medium text-foreground/70 hover:text-foreground transition-colors">Skills</a>
+            <a href="#cv" className="text-sm font-medium text-foreground/70 hover:text-foreground transition-colors">CV</a>
             <a 
               href="#contact" 
-              className="px-6 py-2 bg-primary text-primary-foreground rounded-full text-sm font-semibold
+              className="px-6 py-2.5 bg-primary text-primary-foreground rounded-full text-sm font-semibold
                        hover:shadow-elegant transition-all hover:scale-105"
             >
-              Contact
+              Get in touch
             </a>
           </div>
         </div>
@@ -188,54 +189,55 @@ const App = () => {
       </header>
 
       {/* About Section */}
-      <section className="py-24 bg-muted" id="about">
-        <div className="container mx-auto px-4">
+      <section className="py-32 bg-muted/30" id="about">
+        <div className="container mx-auto px-6 md:px-8">
           <AnimatedSection>
             <div className="max-w-5xl mx-auto">
-              <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center">
-                About <span className="text-gradient">Me</span>
+              <p className="text-sm font-semibold text-primary mb-4 tracking-wide uppercase text-center">About Me</p>
+              <h2 className="text-4xl md:text-6xl font-bold mb-6 text-center">
+                Building digital solutions <br className="hidden md:block" />that <span className="text-gradient">matter</span>
               </h2>
-              <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
+              <p className="text-center text-muted-foreground mb-20 max-w-2xl mx-auto text-lg">
                 Passionate about building scalable systems and solving complex problems
               </p>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-                <div className="group p-8 rounded-2xl bg-background border border-border hover:border-primary/50 
-                            transition-all hover:-translate-y-2 hover:shadow-elegant text-center">
-                  <Code className="mx-auto mb-4 text-primary group-hover:scale-110 transition-transform" size={40} />
-                  <h3 className="font-bold text-lg mb-2">Backend Development</h3>
-                  <p className="text-muted-foreground text-sm">Building robust and scalable server-side applications</p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
+                <div className="group p-10 rounded-2xl bg-background border border-border hover:border-primary/50 
+                            transition-all duration-300 hover:-translate-y-2 hover:shadow-elegant text-center">
+                  <Code className="mx-auto mb-6 text-primary group-hover:scale-110 transition-transform" size={48} />
+                  <h3 className="font-bold text-xl mb-3">Backend Development</h3>
+                  <p className="text-muted-foreground leading-relaxed">Building robust and scalable server-side applications</p>
                 </div>
 
-                <div className="group p-8 rounded-2xl bg-background border border-border hover:border-primary/50 
-                            transition-all hover:-translate-y-2 hover:shadow-elegant text-center">
-                  <svg className="mx-auto mb-4 text-secondary group-hover:scale-110 transition-transform" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <div className="group p-10 rounded-2xl bg-background border border-border hover:border-primary/50 
+                            transition-all duration-300 hover:-translate-y-2 hover:shadow-elegant text-center">
+                  <svg className="mx-auto mb-6 text-secondary group-hover:scale-110 transition-transform" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <path d="M12 2L2 7l10 5 10-5-10-5z"/>
                     <path d="M2 17l10 5 10-5"/>
                     <path d="M2 12l10 5 10-5"/>
                   </svg>
-                  <h3 className="font-bold text-lg mb-2">API Architecture</h3>
-                  <p className="text-muted-foreground text-sm">Designing RESTful APIs and microservices</p>
+                  <h3 className="font-bold text-xl mb-3">API Architecture</h3>
+                  <p className="text-muted-foreground leading-relaxed">Designing RESTful APIs and microservices</p>
                 </div>
 
-                <div className="group p-8 rounded-2xl bg-background border border-border hover:border-primary/50 
-                            transition-all hover:-translate-y-2 hover:shadow-elegant text-center">
-                  <svg className="mx-auto mb-4 text-accent group-hover:scale-110 transition-transform" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                <div className="group p-10 rounded-2xl bg-background border border-border hover:border-primary/50 
+                            transition-all duration-300 hover:-translate-y-2 hover:shadow-elegant text-center">
+                  <svg className="mx-auto mb-6 text-accent group-hover:scale-110 transition-transform" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                     <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
                     <line x1="3" y1="9" x2="21" y2="9"/>
                     <line x1="9" y1="21" x2="9" y2="9"/>
                   </svg>
-                  <h3 className="font-bold text-lg mb-2">Database Design</h3>
-                  <p className="text-muted-foreground text-sm">Optimizing data structures and queries</p>
+                  <h3 className="font-bold text-xl mb-3">Database Design</h3>
+                  <p className="text-muted-foreground leading-relaxed">Optimizing data structures and queries</p>
                 </div>
               </div>
 
-              <div className="bg-background p-8 md:p-12 rounded-2xl shadow-elegant border border-border">
-                <p className="text-muted-foreground leading-relaxed text-lg mb-6">
+              <div className="bg-background p-10 md:p-16 rounded-3xl shadow-elegant border border-border">
+                <p className="text-muted-foreground leading-relaxed text-xl mb-6">
                   I am a passionate <span className="font-semibold text-foreground">Backend Engineer</span> with a solid foundation in 
                   JavaScript, TypeScript, and backend frameworks like Node.js, NestJS, and ExpressJS. 
                 </p>
-                <p className="text-muted-foreground leading-relaxed text-lg">
+                <p className="text-muted-foreground leading-relaxed text-xl">
                   Experienced in building secure, scalable, and user-centric applications with robust database 
                   management using MongoDB, MySQL, and PostgreSQL. Adept at developing RESTful APIs, payment integrations, 
                   and role-based access systems while maintaining high standards for security and performance. 
@@ -248,13 +250,14 @@ const App = () => {
       </section>
 
       {/* Projects Section */}
-      <section id="projects" className="py-24 bg-background">
-        <div className="container mx-auto px-4">
+      <section id="projects" className="py-32 bg-background">
+        <div className="container mx-auto px-6 md:px-8">
           <AnimatedSection>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center">
+            <p className="text-sm font-semibold text-primary mb-4 tracking-wide uppercase text-center">Portfolio</p>
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-center">
               Featured <span className="text-gradient">Projects</span>
             </h2>
-            <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
+            <p className="text-center text-muted-foreground mb-20 max-w-2xl mx-auto text-lg">
               A selection of projects showcasing my technical expertise and problem-solving abilities
             </p>
           </AnimatedSection>
@@ -371,34 +374,35 @@ const App = () => {
       </section>
 
       {/* Skills Section */}
-      <section className="py-24 bg-muted" id="skills">
-        <div className="container mx-auto px-4">
+      <section className="py-32 bg-muted/30" id="skills">
+        <div className="container mx-auto px-6 md:px-8">
           <AnimatedSection>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center">
+            <p className="text-sm font-semibold text-primary mb-4 tracking-wide uppercase text-center">Tech Stack</p>
+            <h2 className="text-4xl md:text-6xl font-bold mb-6 text-center">
               Technical <span className="text-gradient">Skills</span>
             </h2>
-            <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
+            <p className="text-center text-muted-foreground mb-20 max-w-2xl mx-auto text-lg">
               Technologies and tools I work with to build exceptional software
             </p>
           </AnimatedSection>
 
           <div className="max-w-6xl mx-auto">
             <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-              <AnimatedSection delay={100}><SkillBadge name="Node.js" icon={<FaNodeJs />} category="Runtime" /></AnimatedSection>
-              <AnimatedSection delay={120}><SkillBadge name="Express.js" icon={<SiExpress />} category="Framework" /></AnimatedSection>
-              <AnimatedSection delay={140}><SkillBadge name="NestJS" icon={<SiNestjs />} category="Framework" /></AnimatedSection>
-              <AnimatedSection delay={160}><SkillBadge name="TypeScript" icon={<SiTypescript />} category="Language" /></AnimatedSection>
-              <AnimatedSection delay={180}><SkillBadge name="JavaScript" icon={<SiJavascript />} category="Language" /></AnimatedSection>
-              <AnimatedSection delay={200}><SkillBadge name="React" icon={<FaReact />} category="Frontend" /></AnimatedSection>
-              <AnimatedSection delay={220}><SkillBadge name="MongoDB" icon={<SiMongodb />} category="Database" /></AnimatedSection>
-              <AnimatedSection delay={240}><SkillBadge name="MySQL" icon={<SiMysql />} category="Database" /></AnimatedSection>
-              <AnimatedSection delay={260}><SkillBadge name="PostgreSQL" icon={<SiPostgresql />} category="Database" /></AnimatedSection>
-              <AnimatedSection delay={280}><SkillBadge name="Redis" icon={<SiRedis />} category="Cache" /></AnimatedSection>
-              <AnimatedSection delay={300}><SkillBadge name="Git" icon={<FaGitAlt />} category="Version Control" /></AnimatedSection>
-              <AnimatedSection delay={320}><SkillBadge name="Postman" icon={<SiPostman />} category="API Testing" /></AnimatedSection>
-              <AnimatedSection delay={340}><SkillBadge name="Swagger" icon={<SiSwagger />} category="Documentation" /></AnimatedSection>
-              <AnimatedSection delay={360}><SkillBadge name="Vite" icon={<SiVite />} category="Build Tool" /></AnimatedSection>
-              <AnimatedSection delay={380}><SkillBadge name="HTML & CSS" icon={<SiHtml5 />} category="Frontend" /></AnimatedSection>
+              <AnimatedSection delay={100}><SkillBadge name="Node.js" icon={<Server />} category="Runtime" /></AnimatedSection>
+              <AnimatedSection delay={120}><SkillBadge name="Express.js" icon={<Server />} category="Framework" /></AnimatedSection>
+              <AnimatedSection delay={140}><SkillBadge name="NestJS" icon={<Server />} category="Framework" /></AnimatedSection>
+              <AnimatedSection delay={160}><SkillBadge name="TypeScript" icon={<Code />} category="Language" /></AnimatedSection>
+              <AnimatedSection delay={180}><SkillBadge name="JavaScript" icon={<Braces />} category="Language" /></AnimatedSection>
+              <AnimatedSection delay={200}><SkillBadge name="React" icon={<Code />} category="Frontend" /></AnimatedSection>
+              <AnimatedSection delay={220}><SkillBadge name="MongoDB" icon={<Database />} category="Database" /></AnimatedSection>
+              <AnimatedSection delay={240}><SkillBadge name="MySQL" icon={<Database />} category="Database" /></AnimatedSection>
+              <AnimatedSection delay={260}><SkillBadge name="PostgreSQL" icon={<Database />} category="Database" /></AnimatedSection>
+              <AnimatedSection delay={280}><SkillBadge name="Redis" icon={<Database />} category="Cache" /></AnimatedSection>
+              <AnimatedSection delay={300}><SkillBadge name="Git" icon={<Github />} category="Version Control" /></AnimatedSection>
+              <AnimatedSection delay={320}><SkillBadge name="Postman" icon={<ExternalLink />} category="API Testing" /></AnimatedSection>
+              <AnimatedSection delay={340}><SkillBadge name="Swagger" icon={<ExternalLink />} category="Documentation" /></AnimatedSection>
+              <AnimatedSection delay={360}><SkillBadge name="Vite" icon={<Code />} category="Build Tool" /></AnimatedSection>
+              <AnimatedSection delay={380}><SkillBadge name="HTML & CSS" icon={<Code />} category="Frontend" /></AnimatedSection>
             </div>
           </div>
         </div>
@@ -408,23 +412,24 @@ const App = () => {
       <CVSection />
 
       {/* Contact Section */}
-      <section className="py-24 bg-background" id="contact">
-        <div className="container mx-auto px-4">
-          <AnimatedSection>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4 text-center">
-              Let's <span className="text-gradient">Connect</span>
-            </h2>
-            <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
-              Interested in collaborating or have a project in mind? Let's discuss how we can work together
-            </p>
-          </AnimatedSection>
+      <section className="py-32 bg-background" id="contact">
+        <div className="container mx-auto px-6 md:px-8">
+          <div className="max-w-5xl mx-auto">
+            <AnimatedSection>
+              <p className="text-sm font-semibold text-primary mb-4 tracking-wide uppercase text-center">Get In Touch</p>
+              <h2 className="text-4xl md:text-6xl font-bold mb-6 text-center">
+                Let's Work <span className="text-gradient">Together</span>
+              </h2>
+              <p className="text-center text-muted-foreground mb-20 max-w-2xl mx-auto text-lg">
+                Interested in collaborating or have a project in mind? I'd love to hear from you.
+              </p>
+            </AnimatedSection>
 
-          <div className="max-w-4xl mx-auto">
-            <div className="grid md:grid-cols-3 gap-8">
+            <div className="grid md:grid-cols-3 gap-6">
               <AnimatedSection delay={100}>
-                <div className="p-8 rounded-2xl bg-muted hover:shadow-elegant transition-all hover:-translate-y-1 text-center">
-                  <Phone className="mx-auto mb-4 text-primary" size={32} />
-                  <h3 className="font-bold mb-2">Phone</h3>
+                <div className="p-10 rounded-2xl bg-muted/50 border border-border hover:border-primary/50 hover:shadow-elegant transition-all hover:-translate-y-2 text-center">
+                  <Phone className="mx-auto mb-6 text-primary" size={40} />
+                  <h3 className="font-bold text-lg mb-3">Phone</h3>
                   <a href="tel:+447867027428" className="text-muted-foreground hover:text-primary transition-colors">
                     +44 7867 027428
                   </a>
@@ -432,17 +437,17 @@ const App = () => {
               </AnimatedSection>
 
               <AnimatedSection delay={200}>
-                <div className="p-8 rounded-2xl bg-muted hover:shadow-elegant transition-all hover:-translate-y-1 text-center">
-                  <MapPin className="mx-auto mb-4 text-secondary" size={32} />
-                  <h3 className="font-bold mb-2">Location</h3>
+                <div className="p-10 rounded-2xl bg-muted/50 border border-border hover:border-secondary/50 hover:shadow-elegant transition-all hover:-translate-y-2 text-center">
+                  <MapPin className="mx-auto mb-6 text-secondary" size={40} />
+                  <h3 className="font-bold text-lg mb-3">Location</h3>
                   <p className="text-muted-foreground">Dudley, West Midlands, UK</p>
                 </div>
               </AnimatedSection>
 
               <AnimatedSection delay={300}>
-                <div className="p-8 rounded-2xl bg-muted hover:shadow-elegant transition-all hover:-translate-y-1 text-center">
-                  <Mail className="mx-auto mb-4 text-accent" size={32} />
-                  <h3 className="font-bold mb-2">Email</h3>
+                <div className="p-10 rounded-2xl bg-muted/50 border border-border hover:border-accent/50 hover:shadow-elegant transition-all hover:-translate-y-2 text-center">
+                  <Mail className="mx-auto mb-6 text-accent" size={40} />
+                  <h3 className="font-bold text-lg mb-3">Email</h3>
                   <a href="mailto:ayobamieae@gmail.com" className="text-muted-foreground hover:text-accent transition-colors">
                     ayobamieae@gmail.com
                   </a>
@@ -451,11 +456,11 @@ const App = () => {
             </div>
 
             <AnimatedSection delay={400}>
-              <div className="mt-12 text-center">
+              <div className="mt-16 text-center">
                 <a
                   href="mailto:ayobamieae@gmail.com"
-                  className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground 
-                           rounded-full font-semibold hover:shadow-hover transition-all hover:scale-105"
+                  className="inline-flex items-center gap-2 px-10 py-5 bg-primary text-primary-foreground 
+                           rounded-full font-semibold text-lg hover:shadow-hover transition-all hover:scale-105"
                 >
                   <Mail size={20} />
                   Send Me an Email
