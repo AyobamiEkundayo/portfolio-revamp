@@ -278,7 +278,7 @@ const App = () => {
                 <ProjectCard
                   title="DriveWell App"
                   description="Backend infrastructure for a driver wellness and performance tracking application, featuring real-time monitoring, analytics, and comprehensive reporting systems."
-                  tech={["Node.js", "NestJS", "PostgreSQL", "Redis"]}
+                  tech={["Node.js", "Restana", "MySQL", "Redis"]}
                   link="https://www.drivewellapp.com/"
                   github="https://github.com/Ayooluwabami"
                   featured
