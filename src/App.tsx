@@ -266,7 +266,7 @@ const App = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
               <AnimatedSection delay={100}>
                 <ProjectCard
-                  title="Jote Magro"
+                  title="Jotem Agro"
                   description="A comprehensive agricultural platform connecting farmers with markets, providing real-time pricing, and facilitating seamless transactions for agricultural products."
                   tech={["React", "Node.js", "TypeScript", "Tailwind CSS"]}
                   link="https://www.jotemagro.com/"
