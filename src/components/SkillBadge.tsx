@@ -2,26 +2,30 @@ import React from 'react';
 
 interface SkillBadgeProps {
   name: string;
-  icon: React.ReactNode;
+  icon?: React.ReactNode;
   category?: string;
 }
 
 const SkillBadge: React.FC<SkillBadgeProps> = ({ name, icon, category }) => {
   return (
     <div
-      className="group relative p-6 rounded-xl bg-background border border-border
+      className="group relative p-5 rounded-xl bg-background border border-border
                hover:border-primary/50 transition-all duration-300 hover:-translate-y-1
-               hover:shadow-elegant flex flex-col items-center gap-3"
+               hover:shadow-elegant"
       aria-label={`${name}${category ? `, ${category}` : ''}`}
     >
-      <div className="text-4xl text-primary group-hover:scale-110 transition-transform duration-300">
-        {icon}
-      </div>
-      <div className="text-center">
-        <p className="font-semibold text-sm">{name}</p>
-        {category && (
-          <p className="text-xs text-muted-foreground mt-1">{category}</p>
+      <div className="flex items-center gap-3">
+        {icon && (
+          <div className="text-2xl text-primary group-hover:scale-110 transition-transform duration-300">
+            {icon}
+          </div>
         )}
+        <div>
+          <p className="font-semibold text-sm">{name}</p>
+          {category && (
+            <p className="text-xs text-muted-foreground">{category}</p>
+          )}
+        </div>
       </div>
       
       {/* Hover effect gradient */}
