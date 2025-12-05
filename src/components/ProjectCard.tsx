@@ -1,5 +1,6 @@
 import React from 'react';
-import { ExternalLink, Github } from 'lucide-react';
+import { ExternalLink, Github, ArrowUpRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 interface ProjectCardProps {
   title: string;
@@ -8,6 +9,8 @@ interface ProjectCardProps {
   link: string;
   github?: string;
   featured?: boolean;
+  role?: string;
+  impact?: string;
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ 
@@ -16,68 +19,87 @@ const ProjectCard: React.FC<ProjectCardProps> = ({
   tech, 
   link, 
   github,
-  featured = false 
+  featured = false,
+  role,
+  impact
 }) => {
   return (
-    <article 
-      className={`group relative bg-background rounded-2xl p-6 hover:shadow-hover transition-all duration-500
-                 border border-border hover:border-primary/50 hover:-translate-y-2
-                 ${featured ? 'md:col-span-2 md:row-span-2' : ''}`}
+    <motion.article 
+      whileHover={{ y: -8 }}
+      transition={{ duration: 0.3 }}
+      className={`group relative bg-muted/30 rounded-2xl p-6 md:p-8
+                 border border-border hover:border-primary/30 transition-all duration-500
+                 hover:shadow-elegant overflow-hidden`}
     >
+      {/* Gradient overlay on hover */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5 
+                    opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      
       {featured && (
-        <div className="absolute -top-3 -right-3 bg-accent text-accent-foreground px-4 py-1 
-                      rounded-full text-sm font-semibold shadow-lg">
-          Featured
+        <div className="absolute top-4 right-4">
+          <span className="px-3 py-1 text-xs font-semibold bg-primary/10 text-primary rounded-full border border-primary/20">
+            Featured
+          </span>
         </div>
       )}
       
-      <div className="flex justify-between items-start mb-4">
-        <h3 className="text-xl font-bold group-hover:text-primary transition-colors">
-          {title}
-        </h3>
-        <div className="flex gap-2">
-          {github && (
+      <div className="relative z-10">
+        <div className="flex items-start justify-between mb-4">
+          <h3 className="text-xl font-bold group-hover:text-primary transition-colors pr-4">
+            {title}
+          </h3>
+          <div className="flex gap-2 shrink-0">
+            {github && (
+              <a
+                href={github}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`GitHub repository for ${title}`}
+                className="p-2 rounded-lg bg-muted hover:bg-primary hover:text-primary-foreground transition-all"
+              >
+                <Github size={18} />
+              </a>
+            )}
             <a
-              href={github}
+              href={link}
               target="_blank"
               rel="noopener noreferrer"
-              aria-label={`GitHub repository for ${title}`}
-              className="text-muted-foreground hover:text-primary transition-colors"
+              aria-label={`View ${title} project`}
+              className="p-2 rounded-lg bg-muted hover:bg-primary hover:text-primary-foreground transition-all"
             >
-              <Github size={20} />
+              <ArrowUpRight size={18} />
             </a>
-          )}
-          <a
-            href={link}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`External link to ${title}`}
-            className="text-muted-foreground hover:text-primary transition-colors"
-          >
-            <ExternalLink size={20} />
-          </a>
+          </div>
+        </div>
+
+        {role && (
+          <p className="text-sm text-primary font-medium mb-2">{role}</p>
+        )}
+        
+        <p className="text-muted-foreground mb-4 leading-relaxed text-sm">
+          {description}
+        </p>
+
+        {impact && (
+          <p className="text-sm text-accent font-medium mb-4 flex items-center gap-2">
+            <span className="w-1.5 h-1.5 bg-accent rounded-full"></span>
+            {impact}
+          </p>
+        )}
+        
+        <div className="flex flex-wrap gap-2">
+          {tech.map((item, index) => (
+            <span
+              key={index}
+              className="px-3 py-1.5 bg-muted text-muted-foreground text-xs font-medium rounded-lg
+                       border border-border group-hover:border-primary/20 transition-colors"
+            >
+              {item}
+            </span>
+          ))}
         </div>
       </div>
-      
-      <p className="text-muted-foreground mb-6 leading-relaxed">
-        {description}
-      </p>
-      
-      <div className="flex flex-wrap gap-2">
-        {tech.map((item, index) => (
-          <span
-            key={index}
-            className="px-3 py-1 bg-muted text-foreground text-xs font-medium rounded-full
-                     hover:bg-primary hover:text-primary-foreground transition-colors cursor-default"
-          >
-            {item}
-          </span>
-        ))}
-      </div>
-      
-      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent 
-                    opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl pointer-events-none" />
-    </article>
+    </motion.article>
   );
 };
 
