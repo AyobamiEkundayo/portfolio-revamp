@@ -11,7 +11,11 @@ import Contact from './pages/Contact';
 import { Sun, Moon } from 'lucide-react';
 
 const App = () => {
-  const [darkMode, setDarkMode] = useState(() => localStorage.getItem('darkMode') === 'true');
+  const [darkMode, setDarkMode] = useState(() => {
+    // Default to dark mode if no preference is stored
+    const stored = localStorage.getItem('darkMode');
+    return stored === null ? true : stored === 'true';
+  });
 
   useEffect(() => {
     if (darkMode) {
