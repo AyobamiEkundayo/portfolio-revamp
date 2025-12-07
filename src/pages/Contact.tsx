@@ -1,7 +1,6 @@
 import { Mail, MapPin, Phone, Github, Linkedin, ArrowUpRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AnimatedSection from '../components/AnimatedSection';
-import photoshoot from '@/assets/photoshoot.jpg';
 
 const Contact = () => {
   const contactMethods = [
@@ -61,28 +60,12 @@ const Contact = () => {
           {/* Main Contact Card */}
           <AnimatedSection delay={50}>
             <div className="bg-secondary/50 rounded-xl border border-border overflow-hidden mb-6">
-              <div className="grid grid-cols-1 lg:grid-cols-5">
-                {/* Image Section */}
-                <div className="lg:col-span-2 relative h-56 lg:h-auto">
-                  <img 
-                    src={photoshoot} 
-                    alt="Ayobami Edun" 
-                    className="w-full h-full object-cover object-top"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/20 to-transparent lg:bg-gradient-to-r" />
-                  
-                  <div className="absolute bottom-4 left-4 lg:hidden">
-                    <h2 className="text-xl font-bold">Ayobami Edun</h2>
-                    <p className="text-muted-foreground text-sm">Backend Engineer</p>
-                  </div>
+              {/* Contact Info Section */}
+              <div className="p-6 lg:p-8 space-y-5">
+                <div>
+                  <h2 className="text-xl font-bold mb-1">Ayobami Edun</h2>
+                  <p className="text-muted-foreground text-sm">Backend Engineer • API Architect</p>
                 </div>
-
-                {/* Contact Info Section */}
-                <div className="lg:col-span-3 p-6 lg:p-8 space-y-5">
-                  <div className="hidden lg:block">
-                    <h2 className="text-xl font-bold mb-1">Ayobami Edun</h2>
-                    <p className="text-muted-foreground text-sm">Backend Engineer • API Architect</p>
-                  </div>
 
                   {/* Contact Methods */}
                   <div className="space-y-2">
@@ -137,7 +120,6 @@ const Contact = () => {
                         </p>
                       </div>
                     </div>
-                  </div>
                 </div>
               </div>
             </div>

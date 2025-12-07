@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Github, Linkedin, Mail, ArrowRight, Download, ChevronDown } from 'lucide-react';
+import { Github, Linkedin, Mail, ArrowRight, Download } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import AnimatedSection from '../components/AnimatedSection';
@@ -33,9 +33,6 @@ const Home = () => {
     return () => clearTimeout(timeout);
   }, [displayText, isDeleting, roleIndex, roles]);
 
-  const scrollToContent = () => {
-    window.scrollTo({ top: window.innerHeight - 100, behavior: 'smooth' });
-  };
 
   return (
     <div className="min-h-screen">
@@ -169,45 +166,20 @@ const Home = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent" />
                 </div>
                 
-                {/* Floating badges */}
-                <motion.div 
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.5 }}
-                  className="absolute -bottom-4 -left-4 bg-background px-4 py-3 rounded-lg shadow-card border border-border"
-                >
-                  <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                    <span className="text-sm font-medium">Open to hire</span>
-                  </div>
-                </motion.div>
-
+                {/* Years Experience Badge */}
                 <motion.div 
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.6 }}
+                  transition={{ delay: 0.5 }}
                   className="absolute -top-4 -right-4 bg-background px-4 py-3 rounded-lg shadow-card border border-border"
                 >
-                  <p className="text-2xl font-bold text-primary">3+</p>
+                  <p className="text-2xl font-bold text-primary">2+</p>
                   <p className="text-xs text-muted-foreground">Years Exp.</p>
                 </motion.div>
               </div>
             </motion.div>
           </div>
         </div>
-
-        {/* Scroll indicator */}
-        <motion.button
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
-          onClick={scrollToContent}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 
-                   text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
-        >
-          <span className="text-xs font-medium tracking-widest uppercase">Scroll</span>
-          <ChevronDown size={18} className="animate-bounce" />
-        </motion.button>
       </section>
 
       {/* About Preview Section */}
@@ -233,10 +205,9 @@ const Home = () => {
             </AnimatedSection>
 
             <AnimatedSection delay={150}>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="grid grid-cols-3 gap-4">
                 {[
                   { value: "99.9%", label: "API Uptime" },
-                  { value: "50+", label: "Institutions Served" },
                   { value: "30%", label: "Performance Gain" },
                   { value: "40%", label: "Security Improved" }
                 ].map((stat, index) => (
