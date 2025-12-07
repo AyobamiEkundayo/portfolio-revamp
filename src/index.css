@@ -2,64 +2,69 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Premium Portfolio Design System - Dark Mode First */
-/* Palette: Off-Black + Soft White + Electric Blue Accent */
+/* Premium Portfolio Design System */
+/* Primary: Deep Navy Blue #0A1A2F | Accent: Electric Blue #4F8CFF | Background: Rich Dark #0D1117 | Text: Soft Gray #C5CFD9 */
 
 @layer base {
   :root {
-    /* Light Mode - Clean White Theme */
+    /* Light Mode - Clean White with Navy accents */
     --background: 0 0% 100%;
-    --foreground: 213 37% 11%;
+    --foreground: 214 65% 11%;
 
-    --primary: 217 100% 65%;
+    --primary: 219 100% 65%;
     --primary-foreground: 0 0% 100%;
     
-    --secondary: 210 20% 96%;
-    --secondary-foreground: 213 37% 11%;
+    --secondary: 214 30% 96%;
+    --secondary-foreground: 214 65% 11%;
 
-    --accent: 217 100% 65%;
+    --accent: 219 100% 65%;
     --accent-foreground: 0 0% 100%;
 
-    --muted: 210 20% 94%;
-    --muted-foreground: 210 15% 45%;
+    --muted: 214 20% 94%;
+    --muted-foreground: 210 15% 40%;
 
-    --border: 210 20% 90%;
-    --ring: 217 100% 65%;
+    --border: 214 20% 88%;
+    --ring: 219 100% 65%;
     --radius: 0.75rem;
 
     /* Design tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(217, 100%, 65%), hsl(217, 100%, 55%));
-    --gradient-subtle: linear-gradient(180deg, hsl(0, 0%, 100%), hsl(210, 20%, 98%));
-    --shadow-elegant: 0 4px 24px -8px hsl(217 100% 65% / 0.2);
-    --shadow-hover: 0 16px 48px -12px hsl(217 100% 65% / 0.25);
-    --shadow-card: 0 2px 12px -4px hsl(213 37% 11% / 0.08);
+    --gradient-primary: linear-gradient(135deg, hsl(219, 100%, 65%), hsl(219, 100%, 55%));
+    --gradient-subtle: linear-gradient(180deg, hsl(0, 0%, 100%), hsl(214, 30%, 98%));
+    --shadow-elegant: 0 4px 24px -8px hsl(219 100% 65% / 0.2);
+    --shadow-hover: 0 16px 48px -12px hsl(219 100% 65% / 0.3);
+    --shadow-card: 0 2px 12px -4px hsl(214 65% 11% / 0.1);
   }
 
   .dark {
-    /* Dark Mode - Rich Navy #0D1117 with Electric Blue #4F8CFF accent */
-    --background: 213 37% 7%;
-    --foreground: 210 25% 86%;
+    /* Dark Mode - Exact colors requested */
+    /* Background: Rich Dark #0D1117 = 216 28% 7% */
+    /* Primary: Deep Navy Blue #0A1A2F = 214 65% 11% */
+    /* Accent: Electric Blue #4F8CFF = 219 100% 65% */
+    /* Text: Soft Gray #C5CFD9 = 210 20% 81% */
+    
+    --background: 216 28% 7%;
+    --foreground: 210 20% 81%;
 
-    --primary: 217 100% 65%;
+    --primary: 219 100% 65%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 213 37% 12%;
-    --secondary-foreground: 210 25% 86%;
+    --secondary: 214 40% 12%;
+    --secondary-foreground: 210 20% 81%;
 
-    --accent: 217 100% 65%;
+    --accent: 219 100% 65%;
     --accent-foreground: 0 0% 100%;
 
-    --muted: 213 37% 10%;
-    --muted-foreground: 210 15% 60%;
+    --muted: 214 35% 10%;
+    --muted-foreground: 210 15% 55%;
 
-    --border: 213 30% 18%;
-    --ring: 217 100% 65%;
+    --border: 214 30% 20%;
+    --ring: 219 100% 65%;
 
-    --gradient-primary: linear-gradient(135deg, hsl(217, 100%, 65%), hsl(217, 100%, 50%));
-    --gradient-subtle: linear-gradient(180deg, hsl(213, 37%, 7%), hsl(213, 37%, 10%));
-    --shadow-elegant: 0 4px 24px -8px hsl(217 100% 65% / 0.3);
-    --shadow-hover: 0 16px 48px -12px hsl(217 100% 65% / 0.4);
-    --shadow-card: 0 2px 16px -4px hsl(0 0% 0% / 0.5);
+    --gradient-primary: linear-gradient(135deg, hsl(219, 100%, 65%), hsl(219, 100%, 50%));
+    --gradient-subtle: linear-gradient(180deg, hsl(216, 28%, 7%), hsl(214, 40%, 12%));
+    --shadow-elegant: 0 4px 24px -8px hsl(219 100% 65% / 0.35);
+    --shadow-hover: 0 16px 48px -12px hsl(219 100% 65% / 0.45);
+    --shadow-card: 0 2px 16px -4px hsl(0 0% 0% / 0.6);
   }
 }
 
