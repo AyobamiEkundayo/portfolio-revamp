@@ -7,7 +7,10 @@ import Logo from './Logo';
 const Navigation = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isDark, setIsDark] = useState(true);
+  const [isDark, setIsDark] = useState(() => {
+    // Always default to dark mode
+    return true;
+  });
   const location = useLocation();
 
   useEffect(() => {
@@ -24,6 +27,7 @@ const Navigation = () => {
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', isDark);
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
   }, [isDark]);
 
   const navLinks = [
