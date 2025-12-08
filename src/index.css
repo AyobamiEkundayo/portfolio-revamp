@@ -7,18 +7,17 @@
 
 @layer base {
   :root {
-    /* Light Mode - Clean white background with navy accents */
-    /* Background: #FFFFFF | Highlighted Text: #1C2A3A | Additional: #15202B, #223143, #C9D1D9, #9AA5B1, #FF5C5C */
-    --background: 0 0% 100%;
-    --foreground: 210 30% 17%;
+    /* Light Mode - Background #FFFFFF | Text #1C2A3A */
+    --background: 0 0% 100%; /* #FFFFFF */
+    --foreground: 210 30% 17%; /* #1C2A3A */
 
     --primary: 210 30% 17%;
     --primary-foreground: 0 0% 100%;
-    
+
     --secondary: 210 25% 96%;
     --secondary-foreground: 210 30% 17%;
 
-    --accent: 210 35% 20%;
+    --accent: 216 100% 66%; /* #4F8CFF */
     --accent-foreground: 0 0% 100%;
 
     --muted: 210 20% 93%;
@@ -28,26 +27,30 @@
     --ring: 210 30% 17%;
     --radius: 0.75rem;
 
-    /* Additional palette colors */
+    /* Highlight Colors */
+    --highlight-primary: 216 100% 66%;  /* #4F8CFF (Light Mode) */
+    --highlight-secondary: 210 30% 17%; /* Dark navy for bolding */
+
+
+    /* Optional extended palette */
     --navy-deep: 211 35% 12%;
     --navy-mid: 211 30% 20%;
     --gray-light: 210 15% 80%;
     --gray-soft: 210 10% 66%;
     --error: 0 70% 68%;
 
-    /* Design tokens */
-    --gradient-primary: linear-gradient(135deg, hsl(210, 30%, 17%), hsl(211, 35%, 12%));
-    --gradient-subtle: linear-gradient(180deg, hsl(0, 0%, 100%), hsl(210, 25%, 96%));
+    /* Gradients & Shadows */
+    --gradient-primary: linear-gradient(135deg, hsl(210 30% 17%), hsl(211 35% 12%));
+    --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 25% 96%));
     --shadow-elegant: 0 4px 24px -8px hsl(210 30% 17% / 0.15);
     --shadow-hover: 0 16px 48px -12px hsl(210 30% 17% / 0.2);
     --shadow-card: 0 2px 16px -4px hsl(0 0% 0% / 0.08);
   }
 
   .dark {
-    /* Dark Mode - Rich Dark #0D1117 background */
-    /* Additional: #15202B, #223143, #C9D1D9, #9AA5B1, #FF5C5C */
-    --background: 216 28% 7%;
-    --foreground: 210 20% 81%;
+    /* Dark Mode Background #0D1117 | Text #C5CFD9 */
+    --background: 216 28% 7%; /* #0D1117 */
+    --foreground: 210 20% 81%; /* #C5CFD9 */
 
     --primary: 210 20% 81%;
     --primary-foreground: 216 28% 7%;
@@ -55,8 +58,8 @@
     --secondary: 211 35% 12%;
     --secondary-foreground: 210 20% 81%;
 
-    --accent: 211 30% 20%;
-    --accent-foreground: 210 20% 81%;
+    --accent: 216 100% 70%; /* Brigther electric blue for dark mode */
+    --accent-foreground: 216 28% 7%;
 
     --muted: 211 30% 10%;
     --muted-foreground: 210 10% 66%;
@@ -64,21 +67,27 @@
     --border: 211 25% 18%;
     --ring: 210 20% 81%;
 
-    /* Additional palette colors */
+    /* Highlight Colors for Dark Mode */
+    --highlight-primary: 216 100% 70%;  /* Electric Blue #4F8CFF (brightened) */
+    --highlight-secondary: 0 0% 100%;   /* Pure white #FFFFFF */
+
+
+    /* Extended palette */
     --navy-deep: 211 35% 12%;
     --navy-mid: 211 30% 20%;
     --gray-light: 210 15% 80%;
     --gray-soft: 210 10% 66%;
     --error: 0 70% 68%;
 
-    --gradient-primary: linear-gradient(135deg, hsl(210, 20%, 81%), hsl(210, 15%, 70%));
-    --gradient-subtle: linear-gradient(180deg, hsl(216, 28%, 7%), hsl(211, 35%, 12%));
+    --gradient-primary: linear-gradient(135deg, hsl(210 20% 81%), hsl(210 15% 70%));
+    --gradient-subtle: linear-gradient(180deg, hsl(216 28% 7%), hsl(211 35% 12%));
     --shadow-elegant: 0 4px 24px -8px hsl(210 20% 81% / 0.15);
     --shadow-hover: 0 16px 48px -12px hsl(210 20% 81% / 0.2);
     --shadow-card: 0 2px 16px -4px hsl(0 0% 0% / 0.6);
   }
 }
 
+/* Base Styling */
 @layer base {
   * {
     @apply border-border;
@@ -94,10 +103,12 @@
   }
 
   ::selection {
-    @apply bg-primary/20 text-foreground;
+    background: hsl(var(--highlight-primary) / 0.25);
+    color: hsl(var(--foreground));
   }
 }
 
+/* Components */
 @layer components {
   .container-tight {
     @apply max-w-5xl mx-auto px-6;
@@ -112,7 +123,8 @@
   }
 
   .card-hover {
-    @apply transition-all duration-300 hover:border-primary/40 hover:shadow-elegant hover:-translate-y-0.5;
+    @apply transition-all duration-300 
+           hover:border-primary/40 hover:shadow-elegant hover:-translate-y-0.5;
   }
 
   .btn-primary {
@@ -148,6 +160,15 @@
     @apply text-xs font-medium uppercase tracking-wider text-primary;
   }
 
+  /* Highlight utilities */
+  .text-highlight-primary {
+    color: hsl(var(--highlight-primary));
+  }
+
+  .text-highlight-secondary {
+    color: hsl(var(--highlight-secondary));
+  }
+
   /* Code snippet styling */
   .code-window {
     @apply bg-secondary/80 backdrop-blur-md border border-border rounded-xl overflow-hidden;
@@ -167,7 +188,7 @@
   }
 
   .code-keyword {
-    @apply text-primary;
+    @apply text-highlight-primary;
   }
 
   .code-string {
@@ -187,6 +208,7 @@
   }
 }
 
+/* Utilities */
 @layer utilities {
   .text-gradient {
     @apply bg-clip-text text-transparent;
@@ -229,6 +251,7 @@
   }
 }
 
+/* Animations */
 @keyframes float {
   0%, 100% {
     transform: translateY(0) scale(1);
@@ -267,7 +290,7 @@
   }
 }
 
-/* Scrollbar styling */
+/* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
 }
