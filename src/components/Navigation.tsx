@@ -80,13 +80,26 @@ const Navigation = () => {
             ))}
           </div>
 
-          <div className="hidden md:flex items-center gap-2">
+          <div className="hidden md:flex items-center gap-3">
+            {/* Theme Toggle - Styled button */}
             <button
               onClick={() => setIsDark(!isDark)}
-              className="p-2 rounded-md hover:bg-secondary transition-colors"
+              className="relative flex items-center w-16 h-8 rounded-full border border-border bg-background overflow-hidden transition-all"
               aria-label="Toggle theme"
             >
-              {isDark ? <Sun size={18} /> : <Moon size={18} />}
+              <div className="absolute inset-0 flex">
+                <div className="w-1/2 bg-background flex items-center justify-center">
+                  <Sun size={14} className={`transition-opacity ${isDark ? 'opacity-40' : 'opacity-100'}`} />
+                </div>
+                <div className="w-1/2 bg-secondary flex items-center justify-center">
+                  <Moon size={14} className={`transition-opacity ${isDark ? 'opacity-100' : 'opacity-40'}`} />
+                </div>
+              </div>
+              <motion.div 
+                className="absolute w-7 h-6 bg-primary rounded-full mx-0.5"
+                animate={{ x: isDark ? 30 : 2 }}
+                transition={{ type: "spring", stiffness: 500, damping: 30 }}
+              />
             </button>
             <Link 
               to="/contact" 
@@ -100,10 +113,22 @@ const Navigation = () => {
           <div className="flex md:hidden items-center gap-2">
             <button
               onClick={() => setIsDark(!isDark)}
-              className="p-2 rounded-md hover:bg-secondary"
+              className="relative flex items-center w-14 h-7 rounded-full border border-border bg-background overflow-hidden"
               aria-label="Toggle theme"
             >
-              {isDark ? <Sun size={18} /> : <Moon size={18} />}
+              <div className="absolute inset-0 flex">
+                <div className="w-1/2 bg-background flex items-center justify-center">
+                  <Sun size={12} className={`transition-opacity ${isDark ? 'opacity-40' : 'opacity-100'}`} />
+                </div>
+                <div className="w-1/2 bg-secondary flex items-center justify-center">
+                  <Moon size={12} className={`transition-opacity ${isDark ? 'opacity-100' : 'opacity-40'}`} />
+                </div>
+              </div>
+              <motion.div 
+                className="absolute w-6 h-5 bg-primary rounded-full mx-0.5"
+                animate={{ x: isDark ? 24 : 2 }}
+                transition={{ type: "spring", stiffness: 500, damping: 30 }}
+              />
             </button>
             <button
               className="p-2"

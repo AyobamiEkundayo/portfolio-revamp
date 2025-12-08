@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import AnimatedSection from '../components/AnimatedSection';
 import CodeSnippet from '../components/CodeSnippet';
 import photoshoot from '@/assets/photoshoot.jpg';
+import { getYearsOfExperienceLabel } from '@/lib/experience';
 
 const Home = () => {
   const [displayText, setDisplayText] = useState('');
@@ -179,7 +180,7 @@ const Home = () => {
                       transition={{ delay: 0.5 }}
                       className="absolute -top-3 -right-3 bg-background px-3 py-2 rounded-lg shadow-card border border-border"
                     >
-                      <p className="text-xl font-bold text-primary">2+</p>
+                      <p className="text-xl font-bold text-primary">{getYearsOfExperienceLabel()}</p>
                       <p className="text-[10px] text-muted-foreground">Years Exp.</p>
                     </motion.div>
                   </div>

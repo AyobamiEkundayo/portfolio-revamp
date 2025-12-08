@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import AnimatedSection from '../components/AnimatedSection';
 import photoshoot from '@/assets/photoshoot.jpg';
 import working from '@/assets/working.jpg';
+import { getYearsOfExperienceLabel } from '@/lib/experience';
 
 const About = () => {
   const expertise = [
@@ -59,19 +60,22 @@ const About = () => {
         <AnimatedSection delay={50}>
           <div className="max-w-5xl mx-auto mb-16">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-              {/* Image */}
-              <div className="relative">
-                <div className="absolute -inset-4 bg-primary/5 rounded-2xl blur-2xl" />
-                <div className="relative rounded-xl overflow-hidden border border-border">
-                  <img 
-                    src={photoshoot} 
-                    alt="Ayobami Edun" 
-                    className="w-full aspect-[4/5] object-cover object-top"
-                  />
-                </div>
-                <div className="absolute -bottom-4 -right-4 bg-background px-5 py-4 rounded-lg shadow-card border border-border">
-                  <p className="text-2xl font-bold text-primary">3+</p>
-                  <p className="text-xs text-muted-foreground">Years Experience</p>
+              {/* Images - Circular positioning */}
+              <div className="relative flex justify-center">
+                <div className="relative">
+                  {/* Main circular image */}
+                  <div className="w-56 h-56 md:w-64 md:h-64 rounded-full overflow-hidden border-4 border-border shadow-card">
+                    <img 
+                      src={photoshoot} 
+                      alt="Ayobami Edun" 
+                      className="w-full h-full object-cover object-center"
+                    />
+                  </div>
+                  {/* Years badge */}
+                  <div className="absolute -bottom-2 -right-2 bg-background px-4 py-3 rounded-lg shadow-card border border-border">
+                    <p className="text-xl font-bold text-primary">{getYearsOfExperienceLabel()}</p>
+                    <p className="text-xs text-muted-foreground">Years Experience</p>
+                  </div>
                 </div>
               </div>
 
@@ -177,13 +181,15 @@ const About = () => {
                 </Link>
               </div>
               
-              <div className="relative order-1 lg:order-2">
-                <div className="absolute -inset-4 bg-primary/5 rounded-2xl blur-2xl" />
-                <img 
-                  src={working} 
-                  alt="Ayobami working" 
-                  className="relative w-full rounded-xl border border-border"
-                />
+              <div className="relative order-1 lg:order-2 flex justify-center">
+                {/* Circular working image */}
+                <div className="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-border shadow-card">
+                  <img 
+                    src={working} 
+                    alt="Ayobami working" 
+                    className="w-full h-full object-cover object-center"
+                  />
+                </div>
               </div>
             </div>
           </div>
