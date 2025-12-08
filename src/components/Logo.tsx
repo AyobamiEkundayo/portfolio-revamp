@@ -15,9 +15,9 @@ const Logo: React.FC<LogoProps> = ({ size = 'md', className = '' }) => {
   return (
     <div 
       className={`${sizeClasses[size]} rounded-xl flex items-center justify-center font-bold 
-                  bg-gradient-to-br from-primary via-secondary to-accent text-primary-foreground 
+                  bg-primary text-primary-foreground 
                   shadow-elegant transition-all duration-300 
-                  hover:shadow-glow hover:scale-105 ${className}`}
+                  hover:shadow-hover hover:scale-105 ${className}`}
       aria-label="Ayobami Edun Logo"
     >
       A
