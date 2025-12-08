@@ -2,55 +2,44 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Premium Portfolio Design System */
-/* Primary: Deep Navy Blue #0A1A2F | Accent: Electric Blue #4F8CFF | Background: Rich Dark #0D1117 | Text: Soft Gray #C5CFD9 */
-
 @layer base {
   :root {
-    /* Light Mode - Background #FFFFFF | Text #1C2A3A */
-    --background: 0 0% 100%; /* #FFFFFF */
-    --foreground: 210 30% 17%; /* #1C2A3A */
-
-    --primary: 210 30% 17%;
-    --primary-foreground: 0 0% 100%;
+    /* Light Mode - Clean White + Deep Navy */
+    --background: 0 0% 100%;           /* #FFFFFF */
+    --foreground: 209 62% 22%;         /* ≈ #1C2A3A – slightly more saturated for readability */
+    
+    --primary: 209 62% 22%;            /* #1C2A3A */
+    --primary-foreground: 0 0% 100%;   /* #FFFFFF */
 
     --secondary: 210 25% 96%;
-    --secondary-foreground: 210 30% 17%;
+    --secondary-foreground: 209 62% 22%;
 
-    --accent: 216 100% 66%; /* #4F8CFF */
+    --accent: 216 100% 66%;            /* #4F8CFF */
     --accent-foreground: 0 0% 100%;
 
     --muted: 210 20% 93%;
     --muted-foreground: 210 15% 45%;
 
     --border: 210 20% 85%;
-    --ring: 210 30% 17%;
+    --ring: 216 100% 66%;              /* Focus ring = highlight blue */
     --radius: 0.75rem;
 
-    /* Highlight Colors */
-    --highlight-primary: 216 100% 66%;  /* #4F8CFF (Light Mode) */
-    --highlight-secondary: 210 30% 17%; /* Dark navy for bolding */
-
-
-    /* Optional extended palette */
-    --navy-deep: 211 35% 12%;
-    --navy-mid: 211 30% 20%;
-    --gray-light: 210 15% 80%;
-    --gray-soft: 210 10% 66%;
-    --error: 0 70% 68%;
+    /* Highlight Colors – Used for bold, animated, gradient text */
+    --highlight-primary: 216 100% 66%;   /* #4F8CFF – Electric Blue (Light Mode) */
+    --highlight-secondary: 209 62% 22%;  /* Navy fallback */
 
     /* Gradients & Shadows */
-    --gradient-primary: linear-gradient(135deg, hsl(210 30% 17%), hsl(211 35% 12%));
+    --gradient-primary: linear-gradient(135deg, #4F8CFF, #3B7AFF);
     --gradient-subtle: linear-gradient(180deg, hsl(0 0% 100%), hsl(210 25% 96%));
-    --shadow-elegant: 0 4px 24px -8px hsl(210 30% 17% / 0.15);
-    --shadow-hover: 0 16px 48px -12px hsl(210 30% 17% / 0.2);
-    --shadow-card: 0 2px 16px -4px hsl(0 0% 0% / 0.08);
+    --shadow-elegant: 0 4px 24px -8px rgba(28, 42, 58, 0.15);
+    --shadow-hover: 0 16px 48px -12px rgba(28, 42, 58, 0.20);
+    --shadow-card: 0 2px 16px -4px rgba(0, 0, 0, 0.08);
   }
 
   .dark {
-    /* Dark Mode Background #0D1117 | Text #C5CFD9 */
-    --background: 216 28% 7%; /* #0D1117 */
-    --foreground: 210 20% 81%; /* #C5CFD9 */
+    /* Dark Mode – Rich Dark + Soft Gray */
+    --background: 216 28% 7%;           /* #0D1117 */
+    --foreground: 210 20% 81%;          /* #C5CFD9 */
 
     --primary: 210 20% 81%;
     --primary-foreground: 216 28% 7%;
@@ -58,32 +47,25 @@
     --secondary: 211 35% 12%;
     --secondary-foreground: 210 20% 81%;
 
-    --accent: 216 100% 70%; /* Brigther electric blue for dark mode */
+    --accent: 216 100% 66%;             /* Still #4F8CFF – looks amazing on dark */
     --accent-foreground: 216 28% 7%;
 
     --muted: 211 30% 10%;
     --muted-foreground: 210 10% 66%;
 
     --border: 211 25% 18%;
-    --ring: 210 20% 81%;
+    --ring: 216 100% 66%;
 
-    /* Highlight Colors for Dark Mode */
-    --highlight-primary: 216 100% 70%;  /* Electric Blue #4F8CFF (brightened) */
-    --highlight-secondary: 0 0% 100%;   /* Pure white #FFFFFF */
+    /* Highlight Colors – Dark Mode */
+    --highlight-primary: 216 100% 66%;   /* #4F8CFF – bright & vibrant on dark */
+    --highlight-secondary: 0 0% 100%;    /* Pure white fallback */
 
-
-    /* Extended palette */
-    --navy-deep: 211 35% 12%;
-    --navy-mid: 211 30% 20%;
-    --gray-light: 210 15% 80%;
-    --gray-soft: 210 10% 66%;
-    --error: 0 70% 68%;
-
-    --gradient-primary: linear-gradient(135deg, hsl(210 20% 81%), hsl(210 15% 70%));
+    /* Gradients & Shadows – Dark Mode */
+    --gradient-primary: linear-gradient(135deg, #4F8CFF, #6BA3FF);
     --gradient-subtle: linear-gradient(180deg, hsl(216 28% 7%), hsl(211 35% 12%));
-    --shadow-elegant: 0 4px 24px -8px hsl(210 20% 81% / 0.15);
-    --shadow-hover: 0 16px 48px -12px hsl(210 20% 81% / 0.2);
-    --shadow-card: 0 2px 16px -4px hsl(0 0% 0% / 0.6);
+    --shadow-elegant: 0 4px 24px -8px rgba(79, 140, 255, 0.15);
+    --shadow-hover: 0 16px 48px -12px rgba(79, 140, 255, 0.20);
+    --shadow-card: 0 2px 16px -4px rgba(0, 0, 0, 0.60);
   }
 }
 
@@ -105,6 +87,19 @@
   ::selection {
     background: hsl(var(--highlight-primary) / 0.25);
     color: hsl(var(--foreground));
+  }
+}
+
+/* Highlight Text Utility – Use this everywhere for bold/animated text */
+@layer utilities {
+  .text-highlight {
+    @apply font-bold text-transparent bg-clip-text;
+    background-image: var(--gradient-primary);
+  }
+
+  /* Simple bold blue version (great for single words) */
+  .text-highlight-solid {
+    @apply font-bold text-highlight-primary;
   }
 }
 
