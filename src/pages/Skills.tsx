@@ -21,7 +21,7 @@ const Skills = () => {
     },
     {
       title: "API & Testing",
-      skills: ["REST API Design", "OpenAPI/Swagger", "Postman", "Jest", "Supertest", "Webhooks"]
+      skills: ["REST API Design", "OpenAPI/Swagger", "Postman", "Insomnia", "Jest", "Supertest", "Webhooks"]
     },
     {
       title: "Tools & Methods",

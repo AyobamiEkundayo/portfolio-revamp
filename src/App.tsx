@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './index.css';
 import Navigation from './components/Navigation';
@@ -8,36 +7,11 @@ import Projects from './pages/Projects';
 import Skills from './pages/Skills';
 import CV from './pages/CV';
 import Contact from './pages/Contact';
-import { Sun, Moon } from 'lucide-react';
 
 const App = () => {
-  const [darkMode, setDarkMode] = useState(() => {
-    // Default to dark mode if no preference is stored
-    const stored = localStorage.getItem('darkMode');
-    return stored === null ? true : stored === 'true';
-  });
-
-  useEffect(() => {
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-    localStorage.setItem('darkMode', darkMode.toString());
-  }, [darkMode]);
-
   return (
     <Router>
       <div className="min-h-screen bg-background text-foreground">
-        <button
-          className="fixed bottom-6 right-6 z-50 p-4 bg-primary text-primary-foreground rounded-full 
-                   shadow-elegant hover:shadow-hover transition-all hover:scale-110 hover:rotate-180 duration-500"
-          onClick={() => setDarkMode(!darkMode)}
-          aria-label="Toggle Dark Mode"
-        >
-          {darkMode ? <Sun size={24} /> : <Moon size={24} />}
-        </button>
-
         <Navigation />
 
         <Routes>
